@@ -1,0 +1,132 @@
+{
+  "E1_extraction": {
+    "synthetic": {
+      "n_consults": 83,
+      "n_gold_facts": 789,
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "error_kinds": {}
+    },
+    "heldout": {
+      "n_consults": 8,
+      "n_gold_facts": 53,
+      "critical": 0,
+      "major": 12,
+      "minor": 5,
+      "error_kinds": {
+        "missed_finding": 7,
+        "duration_changed": 2,
+        "missed_pertinent_negative": 2,
+        "course_duration_changed": 4,
+        "frequency_changed": 1,
+        "missed_vital": 1
+      }
+    }
+  },
+  "E2_systems": [
+    {
+      "system": "A: spelling-noisy",
+      "wer": 0.40292116589191396,
+      "cs_wer": 0.061005668429258156,
+      "clinical_error_score": 3.746987951807229,
+      "critical_per_consult": 0.024096385542168676,
+      "pct_consults_with_critical": 2.4096385542168677
+    },
+    {
+      "system": "B: clinically brittle",
+      "wer": 0.052181005679898286,
+      "cs_wer": 0.10423892031736012,
+      "clinical_error_score": 7.891566265060241,
+      "critical_per_consult": 1.108433734939759,
+      "pct_consults_with_critical": 69.87951807228916
+    },
+    {
+      "system": "C: uniform",
+      "wer": 0.17919204940064618,
+      "cs_wer": 0.10855004811421172,
+      "clinical_error_score": 8.036144578313253,
+      "critical_per_consult": 0.5301204819277109,
+      "pct_consults_with_critical": 39.75903614457831
+    }
+  ],
+  "E3_sweep": {
+    "n_profiles": 80,
+    "n_consults_each": 30,
+    "spearman_wer_vs_critical": [
+      0.11210619916934365,
+      0.3221484792656095
+    ],
+    "spearman_cswer_vs_critical": [
+      0.3205096517080827,
+      0.0037496575754470602
+    ],
+    "spearman_wer_vs_score": [
+      0.2598972044151455,
+      0.019903245922433126
+    ],
+    "spearman_cswer_vs_score": [
+      0.8304332809454846,
+      1.6469165186416647e-21
+    ]
+  },
+  "E4_ablation": {
+    "A: spelling-noisy": {
+      "phonetic_on": {
+        "clinical_error_score": 3.746987951807229,
+        "critical_per_consult": 0.024096385542168676
+      },
+      "phonetic_off": {
+        "clinical_error_score": 13.289156626506024,
+        "critical_per_consult": 0.024096385542168676
+      }
+    },
+    "C: uniform": {
+      "phonetic_on": {
+        "clinical_error_score": 8.036144578313253,
+        "critical_per_consult": 0.5301204819277109
+      },
+      "phonetic_off": {
+        "clinical_error_score": 9.879518072289157,
+        "critical_per_consult": 0.5180722891566265
+      }
+    }
+  },
+  "E5_E6_E7": {
+    "with_memory": {
+      "allergy_conflict": {
+        "expected": 7,
+        "detected": 7,
+        "false_alarms": 0,
+        "recall": 1.0,
+        "caught_only_via_history": 3
+      },
+      "antibiotic_for_viral": {
+        "expected": 6,
+        "detected": 6,
+        "false_alarms": 0
+      }
+    },
+    "without_memory": {
+      "allergy_conflict": {
+        "expected": 7,
+        "detected": 4,
+        "false_alarms": 0,
+        "recall": 0.5714285714285714,
+        "caught_only_via_history": 0
+      },
+      "antibiotic_for_viral": {
+        "expected": 6,
+        "detected": 6,
+        "false_alarms": 0
+      }
+    },
+    "fhir": {
+      "bundles": 83,
+      "valid": 83,
+      "coded_share": 0.9787234042553191,
+      "coded": 690,
+      "codeable_resources": 705
+    }
+  }
+}

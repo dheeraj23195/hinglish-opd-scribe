@@ -1,0 +1,15 @@
+{
+  "note": "Demo consult (synthetic, role-play). Raw diarisation labels, mixed Roman/Devanagari script.",
+  "turns": [
+    {"speaker": "spk_0", "text": "Namaste doctor sahab."},
+    {"speaker": "spk_1", "text": "Namaste, batayiye kya taklif hai?"},
+    {"speaker": "spk_0", "text": "Teen din se बुखार hai aur khansi bhi hai, do din se."},
+    {"speaker": "spk_1", "text": "Saans lene mein dikkat hai kya?"},
+    {"speaker": "spk_0", "text": "Nahi ji."},
+    {"speaker": "spk_1", "text": "Kisi dawai se allergy?"},
+    {"speaker": "spk_0", "text": "Haan, penicillin se allergy hai."},
+    {"speaker": "spk_1", "text": "Temperature 101 hai. Ye viral fever lag raha hai. Antibiotic ki zarurat nahi hai."},
+    {"speaker": "spk_1", "text": "Dolo 650 din mein teen baar lijiye, teen din ke liye. Cetirizine 10 mg raat ko sone se pehle, paanch din ke liye."},
+    {"speaker": "spk_1", "text": "Paani zyada piyiye aur aaraam kariye. Teen din baad dikhaiye."}
+  ]
+}

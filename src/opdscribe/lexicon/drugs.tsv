@@ -1,0 +1,29 @@
+drug_id	generic	snomed_substance_code	drug_class	is_antibiotic	aware_group	surface_forms	code_status
+paracetamol	Paracetamol	387517004	analgesic	0		paracetamol|pcm|crocin|dolo|calpol|acetaminophen	recalled
+ibuprofen	Ibuprofen	387207008	nsaid	0		ibuprofen|brufen	recalled
+diclofenac	Diclofenac	7034005	nsaid	0		diclofenac|voveran	recalled
+aspirin	Aspirin	387458008	nsaid	0		aspirin|disprin|ecosprin	recalled
+cetirizine	Cetirizine	372523007	antihistamine	0		cetirizine|cetzine|okacet|alerid	recalled
+montelukast	Montelukast	373728005	leukotriene_antagonist	0		montelukast|montair	recalled
+amoxicillin	Amoxicillin	372687004	penicillin	1	Access	amoxicillin|amoxycillin|novamox|mox	recalled
+amoxiclav	Amoxicillin + clavulanate		penicillin	1	Access	augmentin|amoxyclav|amoxiclav|clavam	unverified
+azithromycin	Azithromycin	387531004	macrolide	1	Watch	azithromycin|azithral|azee	recalled
+ciprofloxacin	Ciprofloxacin	372840008	fluoroquinolone	1	Watch	ciprofloxacin|ciplox|cifran	recalled
+cefixime	Cefixime		cephalosporin	1	Watch	cefixime|zifi|taxim o	unverified
+doxycycline	Doxycycline	372478003	tetracycline	1	Access	doxycycline|doxy|doxt	recalled
+metronidazole	Metronidazole	372602008	nitroimidazole	1	Access	metronidazole|metrogyl|flagyl	recalled
+nitrofurantoin	Nitrofurantoin		nitrofuran	1	Access	nitrofurantoin|niftran	unverified
+cotrimoxazole	Co-trimoxazole		sulfonamide	1	Access	cotrimoxazole|septran|bactrim	unverified
+ondansetron	Ondansetron	372487007	antiemetic	0		ondansetron|ondem|emeset|vomikind	recalled
+domperidone	Domperidone	387181004	antiemetic	0		domperidone|domstal	recalled
+pantoprazole	Pantoprazole	395821003	ppi	0		pantoprazole|pantocid|pan 40|pantop	recalled
+omeprazole	Omeprazole	387137007	ppi	0		omeprazole|omez	recalled
+ors	Oral rehydration salts		rehydration	0		ors|electral	unverified
+metformin	Metformin	109081006	biguanide	0		metformin|glycomet|glyciphage	recalled
+glimepiride	Glimepiride	386966003	sulfonylurea	0		glimepiride|amaryl|glimestar	recalled
+amlodipine	Amlodipine	386864001	ccb	0		amlodipine|amlokind|amlong|stamlo	recalled
+telmisartan	Telmisartan	387069000	arb	0		telmisartan|telma	recalled
+losartan	Losartan	373567002	arb	0		losartan|losar|repace	recalled
+atorvastatin	Atorvastatin	373444002	statin	0		atorvastatin|atorva	recalled
+levothyroxine	Levothyroxine		thyroid_hormone	0		levothyroxine|thyronorm|eltroxin	unverified
+salbutamol	Salbutamol	372897005	saba	0		salbutamol|asthalin|albuterol	recalled
