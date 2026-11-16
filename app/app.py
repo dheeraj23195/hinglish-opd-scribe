@@ -78,7 +78,10 @@ def parse_transcript(text: str) -> list[Turn]:
 
 
 def to_text(c: dict) -> str:
-    return "\n".join(f"{'D' if t['speaker'] == 'doctor' else 'P'}: {t['text']}" for t in c["turns"])
+    tag = {"doctor": "D", "patient": "P"}
+    # Held-out consults use diarisation labels (spk_0/spk_1); keep them so the
+    # pipeline infers who is the doctor instead of treating every line as patient.
+    return "\n".join(f"{tag.get(t['speaker'], t['speaker'])}: {t['text']}" for t in c["turns"])
 
 
 st.title("🩺 Hinglish OPD scribe")
