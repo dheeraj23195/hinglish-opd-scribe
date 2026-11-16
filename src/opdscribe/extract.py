@@ -33,14 +33,27 @@ UNIT_DAYS = {
     "mahine": 30, "mahina": 30, "month": 30, "months": 30, "saal": 365, "year": 365, "years": 365,
 }
 
+def _dose_pattern_freq(s: str) -> str | None:
+    m = re.search(r"\bdose_([0-2])([0-2])([0-2])\b", s)
+    if not m:
+        return None
+    a, b, c = (int(x) for x in m.groups())
+    n = sum(1 for x in (a, b, c) if x)
+    if n == 1 and c and not a and not b:
+        return "HS"
+    return {1: "OD", 2: "BD", 3: "TDS"}.get(n)
+
+
 FREQ_PATTERNS = [  # order matters: more specific first
     (r"\b(?:din mein |roz |daily )?(?:4|char|chaar) (?:baar|bar|times)\b|\bqid\b", "QID"),
     (r"\b(?:din mein |roz )?(?:3|teen) (?:baar|bar|times)\b|\btds\b|\btid\b|\bthrice\b|\bsubah dopahar (?:aur )?(?:shaam|raat)\b", "TDS"),
     (r"\b(?:din mein |roz )?(?:2|do) (?:baar|bar|times)\b|\bbd\b|\bbid\b|\btwice\b|\bsubah (?:aur )?(?:shaam|raat)\b", "BD"),
     (r"\b(?:din mein |roz )?(?:1|ek) (?:baar|bar|time)\b|\bod\b|\bonce\b|\broz ek\b", "OD"),
     (r"\bzarurat (?:pade|padne par|ho)\b|\bsos\b|\bjab (?:bukhar|dard) ho\b|\bif needed\b", "SOS"),
-    (r"\braat ko\b|\bsone se pehle\b|\bhs\b|\bbedtime\b", "HS"),
+    (r"\braat ko\b|\bsone se pehle\b|\bhs\b|\bbedtime\b|\bat night\b|\bnight\b", "HS"),
+    (r"\b(?:roz |daily )?subah\b|\bmorning\b|\bonce daily\b", "OD"),
 ]
+from .lexicon import INTENSIFIERS  # noqa: E402
 
 _matcher_cache: dict[bool, Matcher] = {}
 
@@ -146,7 +159,7 @@ def _vitals(toks: list[str], evidence: str) -> tuple[list[Vital], set[int]]:
         b = a + s[m.start(): m.end()].count(" ") + 1
         return set(range(a, b))
 
-    for m in re.finditer(r"\b(?:bp|blood pressure)\s+(?:hai\s+)?(\d{2,3})\s*(?:by|/|upon|over|par)\s*(\d{2,3})", s):
+    for m in re.finditer(r"\b(?:bp|blood pressure)\b(?:\s+[a-z]+){0,4}?\s+(\d{2,3})\s*(?:by|/|upon|over|par|bai)\s*(\d{2,3})", s):
         out.append(Vital("bp", float(m.group(1)), float(m.group(2)), "mm[Hg]", evidence)); used |= span(m)
     for m in re.finditer(r"\b(?:temperature|temp|bukhar|taap)\s+(?:hai\s+)?(\d{2,3}(?:\.\d)?)", s):
         v = float(m.group(1))
@@ -173,13 +186,23 @@ def _med_attrs(toks: list[str], start: int, stop: int) -> dict:
     elif re.search(r"\b(\d+)\s*(puff|puffs)\b", s):
         mm = re.search(r"\b(\d+)\s*(puff|puffs)\b", s)
         out["dose_value"], out["dose_unit"] = float(mm.group(1)), "puff"
-    for pat, code in FREQ_PATTERNS:
-        if re.search(pat, s):
-            out["frequency"] = code
-            break
+    out_f = _dose_pattern_freq(s)
+    if out_f:
+        out["frequency"] = out_f
+    else:
+        for pat, code in FREQ_PATTERNS:
+            if re.search(pat, s):
+                out["frequency"] = code
+                break
     m = re.search(r"\b(\d+(?:\.\d+)?)\s+(din|day|days|hafte|hafta|week|weeks|mahine|month|months)\s+(?:ke liye|liye|tak|for)\b", s)
     if not m:
         m = re.search(r"\bfor\s+(\d+(?:\.\d+)?)\s+(day|days|week|weeks|month|months)\b", s)
+    if not m:
+        m = re.search(r"\b(\d+(?:\.\d+)?)\s+(din|days|day|hafte|hafta|week|weeks|mahine|mahina|month|months)\b(?!\s+(?:baad|ke baad|se|mein|later|after))", s)
+        if m and float(m.group(1)) > 90:
+            m = None
+        if m and re.search(r"\b(?:se|since)\s+" + re.escape(m.group(0)), s):
+            m = None
     if m:
         out["duration_days"] = float(m.group(1)) * UNIT_DAYS[m.group(2)]
     return out
@@ -198,6 +221,7 @@ def extract(turns: list[Turn], patient_id: str = "anon", encounter_id: str = "en
     meds: dict[str, Medication] = {}
 
     pending_q: list[tuple[str, str]] = []  # (concept_id, category) asked by doctor, awaiting answer
+    dur_q = False  # doctor asked "kab se / kitne din se"
     allergy_q = False
 
     def put_finding(f: Finding) -> None:
@@ -222,7 +246,11 @@ def extract(turns: list[Turn], patient_id: str = "anon", encounter_id: str = "en
         allergy_ctx = any(t in ALLERGY_WORDS for t in work) or (not is_doc and allergy_q) or "suit nahi" in " ".join(work)
 
         drug_spans = m.find(work, {"drug"})
-        concept_spans = m.find(work, {"symptom", "condition"})
+        keep = [i for i, t in enumerate(work) if t not in INTENSIFIERS]
+        concept_spans = []
+        for x in m.find([work[i] for i in keep], {"symptom", "condition"}):
+            x.start, x.end = keep[x.start], keep[x.end - 1] + 1
+            concept_spans.append(x)
         span_tokens = {i for x in drug_spans + concept_spans for i in range(x.start, x.end)}
 
         # ---------------- allergies ----------------
@@ -239,21 +267,30 @@ def extract(turns: list[Turn], patient_id: str = "anon", encounter_id: str = "en
                 allergy_q = False
                 pending_q = []
                 continue
+        if is_doc and question:
+            dur_q = bool(re.search(r"\b(?:kab se|kitne din|kitne dino|since when|how long|kitne samay)\b", " ".join(work)))
         if is_doc:
             allergy_q = (any(t in ALLERGY_WORDS for t in work) or "suit" in work) and not m.find(work, {"allergy"})
 
         # ---------------- question -> answer linking ----------------
-        if not is_doc and pending_q and not concept_spans:
+        if not is_doc and (pending_q or dur_q):
+            answered = {x.ref_id for x in concept_spans}
+            pend = [(cid, cat) for cid, cat in pending_q if cid not in answered]
             first = work[0]
-            if _is_neg(first) or any(_is_neg(t) for t in work[:3]):
-                for cid, cat in pending_q:
+            lead_dur = _duration_near(work, 0, min(len(work), 4))
+            if pend and (_is_neg(first) or (len(work) > 1 and first in AFFIRM | {"no", "na"} and _is_neg(work[1]))):
+                for cid, cat in pend:
                     put_finding(Finding(cid, cat, False, None, "patient", False, turn.text))
-            elif first in AFFIRM:
-                dur = _duration_near(work, 0, len(work))
-                for cid, cat in pending_q:
+            elif pend and (first in AFFIRM or (dur_q and lead_dur is not None)):
+                dur = lead_dur if lead_dur is not None else _duration_near(work, 0, len(work))
+                for cid, cat in pend:
                     put_finding(Finding(cid, cat, True, dur, "patient", False, turn.text))
+            elif dur_q and not pend and lead_dur is not None:
+                for f in findings.values():  # "Kab se?" with no symptom named: date the open complaints
+                    if f.category == "symptom" and f.present and f.duration_days is None and not f.is_diagnosis:
+                        f.duration_days = lead_dur
         if not is_doc:
-            pending_q = []
+            pending_q, dur_q = [], False
 
         # ---------------- symptoms & conditions ----------------
         for x in concept_spans:
@@ -271,6 +308,7 @@ def extract(turns: list[Turn], patient_id: str = "anon", encounter_id: str = "en
 
         # ---------------- medications (doctor, not questions) ----------------
         if is_doc and not question and drug_spans:
+            turn_meds: list[Medication] = []
             for i, d in enumerate(drug_spans):
                 stop = drug_spans[i + 1].start if i + 1 < len(drug_spans) else len(work)
                 if _negated(work, d.start, d.end, set()):
@@ -281,6 +319,11 @@ def extract(turns: list[Turn], patient_id: str = "anon", encounter_id: str = "en
                         setattr(meds[d.ref_id], k, getattr(meds[d.ref_id], k) or v)
                 else:
                     meds[d.ref_id] = Medication(d.ref_id, evidence=turn.text, **attrs)
+                turn_meds.append(meds[d.ref_id])
+            # "X ... aur Y ..., ek mahine ke liye": a course length closing the turn covers every drug in it
+            if len(turn_meds) > 1 and turn_meds[-1].duration_days and re.search(r"\b(?:ke liye|tak|for)\b", " ".join(work[drug_spans[-1].start:])):
+                for med in turn_meds[:-1]:
+                    med.duration_days = med.duration_days or turn_meds[-1].duration_days
 
         # ---------------- follow-up & advice ----------------
         if is_doc:

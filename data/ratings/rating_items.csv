@@ -1,0 +1,115 @@
+item_id,speaker,said,transcribed,op,ref_token,hyp_token,category,consult_id,turn
+R001,patient,saath mein badan dard bhi hai kal se,saath mein badan dard bhi hai matlab se,sub,kal,matlab,OTHER,P011-V3,3
+R002,doctor,temperature 100 hai,temperature 1000 hai,sub,100,1000,NUMBER,P023-V1,12
+R003,patient,haan mujhe high bp aur sugar hai kaafi saal se,haan mujhe high bp aur sugar hai kaafin saal se,sub,kaafi,kaafin,OTHER,P017-V1,10
+R004,doctor,koi bukhaar,koi buaarin,sub,bukhaar,buaarin,CLINICAL,P020-V1,4
+R005,doctor,metformin 500 mg subah shaam lijiye ek mahine ke liye,amoxiclav 500 mg subah shaam lijiye ek mahine ke liye,sub,metformin,amoxiclav,DRUG,P029-V3,11
+R006,doctor,bp 150 by 100 hai,bp 150 by 1000 hai,sub,100,1000,NUMBER,P030-V2,11
+R007,doctor,tablet amlodipine 5 mg roz ek baar lena hai ek mahine ke liye,tablet taablet 5 mg roz ek baar lena hai ek mahine ke liye,sub,amlodipine,taablet,DRUG,P004-V2,9
+R008,doctor,main dolo 650 de raha hoon din mein teen baar teen din ke liye,main dolo de raha hoon din mein teen baar teen din ke liye,del,650,,NUMBER,P005-V1,12
+R009,patient,nahi ji runny nose to nahi hai,nahi ji runny nose to hai,del,nahi,,NEGATION,P029-V2,4
+R010,patient,haan mujhe diabetes hai kaafi saal se,haan mujhe diabetes hai kaafee saal se,sub,kaafi,kaafee,OTHER,P033-V3,6
+R011,doctor,namaste aap phir aaye ab kya taklif hai,namaste aap phir aaye aab kya taklif hai,sub,ab,aab,OTHER,P010-V3,0
+R012,doctor,tablet amlokind 5 mg din mein ek baar lena hai ek mahine ke liye,tablet amlokind 5 din mein ek baar lena hai ek mahine ke liye,del,mg,,REGIMEN,P030-V2,13
+R013,doctor,main okacet 10 mg de raha hoon raat ko sone se pehle paanch din ke liye,main okacet 10 mg de raha hoon raat ko sone matlab pehle paanch din ke liye,sub,se,matlab,FILLER,P025-V2,17
+R014,doctor,main mox 500 mg de raha hoon din mein teen baar paanch din ke liye,main ecosprin 500 mg de raha hoon din mein teen baar paanch din ke liye,sub,mox,ecosprin,DRUG,P035-V2,14
+R015,patient,nahi ji aisa kuch nahi,nahi ji aisa toh nahi,sub,kuch,toh,OTHER,P002-V1,11
+R016,patient,nahi koi allergy nahi hai,hi koi allergy nahi hai,sub,nahi,hi,NEGATION,P002-V2,9
+R017,doctor,ye typhoid lag raha hai,ye typhoeed lag raha hai,sub,typhoid,typhoeed,CLINICAL,P012-V1,10
+R018,doctor,bp 156 by 94 hai,bp 156 by 194 hai,sub,94,194,NUMBER,P006-V1,14
+R019,doctor,tablet domperidone 10 mg zarurat pade toh lena hai,tablet domperidone 9 mg zarurat pade toh lena hai,sub,10,9,NUMBER,P017-V1,16
+R020,patient,nahi ji aisa kuch nahi,nahi ji aisa kuch,del,nahi,,NEGATION,P025-V1,10
+R021,doctor,lagta hai ye gale ka infection hai,lagta hai ye gale ka eenfection hai,sub,infection,eenfection,CLINICAL,P012-V2,13
+R022,patient,seene mein jalan hai ek hafte se,seea mein jalan hai ek hafte se,sub,seene,seea,CLINICAL,P013-V2,1
+R023,patient,haan mujhe high bp aur sugar hai kaafi saal se,haan mujhe high bp aur hai kaafi saal se,del,sugar,,CLINICAL,P009-V3,7
+R024,patient,saath mein zyada pyaas bhi hai ek hafte se,saath mein pyaas bhi hai ek hafte se,del,zyada,,CLINICAL,P026-V1,2
+R025,doctor,haan ji pichli baar ke baad ab kya problem hai,haan ji pichli baar ke baad ab kya achha hai,sub,problem,achha,OTHER,P031-V2,0
+R026,doctor,koi khaansi,koi kaansi,sub,khaansi,kaansi,CLINICAL,P002-V1,5
+R027,patient,nahi koi allergy nahi hai,nahi koi alleye nahi hai,sub,allergy,alleye,ALLERGY,P040-V2,9
+R028,doctor,brufen ya koi painkiller mat lijiye sirf paracetamol,repace ya koi painkiller mat lijiye sirf paracetamol,sub,brufen,repace,DRUG,P002-V1,14
+R029,patient,haan mujhe high bp hai kaafi saal se,haan mujhe high bp hai kaafee saal se,sub,kaafi,kaafee,OTHER,P037-V2,9
+R030,doctor,main paracetamol 650 mg de raha hoon subah dopahar shaam teen din ke liye,main amlodipine 650 mg de raha hoon subah dopahar shaam teen din ke liye,sub,paracetamol,amlodipine,DRUG,P015-V1,14
+R031,patient,haan aspirin se allergy hai daane nikal aaye the,haan aspirin se allergy hai daane nikal aaye ji,sub,the,ji,OTHER,P005-V1,9
+R032,patient,nahi bilkul nahi,nahi bilkul,del,nahi,,NEGATION,P022-V1,5
+R033,doctor,main amoxicillin 500 mg de raha hoon din mein teen baar paanch din ke liye,main cifran 500 mg de raha hoon din mein teen baar paanch din ke liye,sub,amoxicillin,cifran,DRUG,P022-V2,13
+R034,doctor,bp 156 by 94 hai,bp 156 by 95 hai,sub,94,95,NUMBER,P006-V2,10
+R035,doctor,tablet azithral 500 mg roz ek baar lena hai teen din ke liye,tablet azhralar 500 mg roz ek baar lena hai teen din ke liye,sub,azithral,azhralar,DRUG,P003-V2,17
+R036,doctor,sar dard bhi hai kya,sar dard bhi hmm kya,sub,hai,hmm,FILLER,P024-V3,2
+R037,doctor,koi dawai suit nahi karti,koi dawai suar nahi karti,sub,suit,suar,ALLERGY,P036-V1,12
+R038,doctor,main dolo 650 de raha hoon subah dopahar shaam teen din ke liye,main dolo 650 de ji hoon subah dopahar shaam teen din ke liye,sub,raha,ji,OTHER,P027-V1,16
+R039,doctor,metformin 500 mg din mein do baar lijiye ek mahine ke liye,metformin mg din mein do baar lijiye ek mahine ke liye,del,500,,NUMBER,P002-V2,12
+R040,doctor,haan ji pichli baar ke baad ab kya problem hai,haan pichli baar ke baad ab kya problem hai,del,ji,,FILLER,P002-V2,0
+R041,doctor,headache bhi hai kya,headache bhee hai kya,sub,bhi,bhee,FILLER,P006-V2,2
+R042,doctor,temperature 100.5 hai,temperature na hai,sub,100.5,na,NUMBER,P007-V2,11
+R043,doctor,main paracetamol 650 mg de raha hoon zarurat pade toh,main glyciphage 650 mg de raha hoon zarurat pade toh,sub,paracetamol,glyciphage,DRUG,P024-V2,11
+R044,doctor,koi dawai suit nahi karti,koi dawai ste nahi karti,sub,suit,ste,ALLERGY,P016-V1,9
+R045,patient,nahi chest pain nahi hai,hi chest pain nahi hai,sub,nahi,hi,NEGATION,P010-V2,4
+R046,doctor,kisi dawai se allergy hai,kisi dawai se hai,del,allergy,,ALLERGY,P030-V2,9
+R047,doctor,tablet paracetamol 650 mg zarurat pade toh lena hai,paracetamol 650 mg zarurat pade toh lena hai,del,tablet,,REGIMEN,P009-V1,16
+R048,doctor,tablet crocin 650 din mein teen baar lena hai teen din ke liye,tablet crocin 650 baar mein teen baar lena hai teen din ke liye,sub,din,baar,REGIMEN,P008-V1,14
+R049,patient,nahi koi allergy nahi hai,nahi koi allergy nahi haee,sub,hai,haee,FILLER,P040-V1,13
+R050,doctor,koi dawai suit nahi karti,koi dawai suit to karti,sub,nahi,to,NEGATION,P015-V1,10
+R051,doctor,aapka bp ki problem abhi control mein kam hai dawai badhani padegi,aapka bp ki problem abhi control mein hai dawai badhani padegi,del,kam,,OTHER,P037-V2,13
+R052,patient,nahi khansi nahi hai,to khansi nahi hai,sub,nahi,to,NEGATION,P012-V2,4
+R053,doctor,temperature 100 hai,temperature 100 na,sub,hai,na,FILLER,P027-V1,14
+R054,patient,haan mujhe high bp aur sugar hai kaafi saal se,haan mujhe heegh bp aur sugar hai kaafi saal se,sub,high,heegh,CLINICAL,P010-V1,7
+R055,doctor,crocin 650 zarurat pade toh lijiye,cronar 650 zarurat pade toh lijiye,sub,crocin,cronar,DRUG,P017-V1,15
+R056,doctor,mujhe gastritis lag raha hai,mujhe gastreetis lag raha hai,sub,gastritis,gastreetis,CLINICAL,P013-V2,13
+R057,patient,haan mujhe bp ki problem aur diabetes hai kaafi saal se,haan mujhe bp ki problem aur diabetes kaafi saal se,del,hai,,FILLER,P010-V3,6
+R058,doctor,fasting sugar 210 aaya hai,fasting sugar 210 hai,del,aaya,,OTHER,P026-V1,10
+R059,patient,penicillin se reaction hua tha ek baar,penicillin se rctionin hua tha ek baar,sub,reaction,rctionin,ALLERGY,P023-V2,10
+R060,doctor,tablet metformin 500 mg din mein do baar lena hai ek mahine ke liye,tablet metformin 500 mg deen mein do baar lena hai ek mahine ke liye,sub,din,deen,REGIMEN,P039-V1,13
+R061,doctor,cetirizine 10 mg raat ko sone se pehle lijiye paanch din ke liye,cetirizie 10 mg raat ko sone se pehle lijiye paanch din ke liye,sub,cetirizine,cetirizie,DRUG,P004-V1,13
+R062,doctor,amoxicillin 500 mg subah dopahar shaam lijiye paanch din ke liye,amoxicillin 500 mg subah dopahar din lijiye paanch din ke liye,sub,shaam,din,REGIMEN,P013-V1,14
+R063,doctor,tablet glimepiride 1 mg din mein ek baar lena hai ek mahine ke liye,tablet glimepiride 1 din mein ek baar lena hai ek mahine ke liye,del,mg,,REGIMEN,P039-V2,12
+R064,doctor,koi dawai suit nahi karti,koi dawai suit nahi karti ji,ins,,ji,FILLER,P038-V1,9
+R065,doctor,main mox 500 mg de raha hoon din mein teen baar paanch din ke liye,main pantoprazole 500 mg de raha hoon din mein teen baar paanch din ke liye,sub,mox,pantoprazole,DRUG,P023-V2,15
+R066,patient,haan mujhe diabetes hai kaafi saal se,haan mujhe moojhe hai kaafi saal se,sub,diabetes,moojhe,CLINICAL,P039-V3,5
+R067,patient,haan mujhe bp ki problem hai kaafi saal se,haan mujhe bp problem hai kaafi saal se,del,ki,,CLINICAL,P021-V3,7
+R068,patient,nahi bilkul nahi,nahi bilkul hi,sub,nahi,hi,NEGATION,P003-V2,7
+R069,doctor,mujhe gastritis lag raha hai,mujhe lag raha hai,del,gastritis,,CLINICAL,P011-V2,10
+R070,doctor,paani khoob piyiye aaraam kariye,khoob piyiye aaraam kariye,del,paani,,OTHER,P011-V2,12
+R071,patient,saath mein headache bhi hai kuch dino se,saath mein headache bhi hai kuch deeno se,sub,dino,deeno,REGIMEN,P004-V2,2
+R072,doctor,tablet glimepiride 1 mg din mein ek baar lena hai ek mahine ke liye,tablet glimepiride mg din mein ek baar lena hai ek mahine ke liye,del,1,,NUMBER,P017-V2,13
+R073,doctor,bp 124 by 78 hai,bp 124 by 178 hai,sub,78,178,NUMBER,P015-V2,9
+R074,doctor,main nitrofurantoin 100 mg de raha hoon din mein do baar paanch din ke liye,main nitrofurantoin 100 mg de raha hoon matlab mein do baar paanch din ke liye,sub,din,matlab,REGIMEN,P009-V3,12
+R075,patient,nahi bilkul nahi,to bilkul nahi,sub,nahi,to,NEGATION,P029-V3,4
+R076,doctor,tablet okacet 10 mg raat ko sone se pehle lena hai paanch din ke liye,tablet okacet 110 mg raat ko sone se pehle lena hai paanch din ke liye,sub,10,110,NUMBER,P027-V1,17
+R077,patient,nahi koi bimari nahi hai,koi bimari nahi hai,del,nahi,,NEGATION,P012-V1,6
+R078,patient,haan mujhe high bp hai kaafi saal se,haan moojhe high bp hai kaafi saal se,sub,mujhe,moojhe,FILLER,P021-V2,11
+R079,doctor,teen din baad dikhaiye,teen din din dikhaiye,sub,baad,din,REGIMEN,P009-V1,18
+R080,doctor,glycomet 500 mg din mein do baar lijiye ek mahine ke liye,achha 500 mg din mein do baar lijiye ek mahine ke liye,sub,glycomet,achha,DRUG,P014-V2,13
+R081,doctor,nitrofurantoin 100 mg subah shaam lijiye paanch din ke liye,nitrofurantoin 100 mg subah shaam lijiye paanch na ke liye,sub,din,na,REGIMEN,P033-V2,12
+R082,doctor,main okacet 10 mg de raha hoon raat ko sone se pehle paanch din ke liye,main okacet 100 mg de raha hoon raat ko sone se pehle paanch din ke liye,sub,10,100,NUMBER,P025-V2,17
+R083,patient,nahi koi allergy nahi hai,nahi koi allergy hai,del,nahi,,NEGATION,P027-V2,8
+R084,doctor,koi dawai suit nahi karti,koi dawai nahi karti,del,suit,,ALLERGY,P027-V2,7
+R085,patient,saath mein loose motion bhi hai ek hafte se,saath mein loose motion bhi hai ek achha se,sub,hafte,achha,REGIMEN,P038-V1,4
+R086,patient,saath mein stomach pain bhi hai ek hafte se,saath mein stomach pain bhi hai ek raat se,sub,hafte,raat,REGIMEN,P023-V2,4
+R087,doctor,paani zyada piyiye aur aaraam kariye,paanin zyada piyiye aur aaraam kariye,sub,paani,paanin,OTHER,P017-V2,14
+R088,patient,aur gale mein dard bhi hai teen din se,aur gale mein daard bhi hai teen din se,sub,dard,daard,CLINICAL,P027-V1,3
+R089,patient,aur bukhar bhi hai do din se,aoor bukhar bhi hai do din se,sub,aur,aoor,FILLER,P023-V1,3
+R090,doctor,main crocin 650 de raha hoon subah dopahar shaam paanch din ke liye,main crocin 650 de raha hoon subah dopahar shaam paanch din ke raat,sub,liye,raat,REGIMEN,P035-V1,15
+R091,doctor,burning urine bhi hai kya,burneeng urine bhi hai kya,sub,burning,burneeng,CLINICAL,P009-V3,2
+R092,patient,nahi ji aisa kuch nahi,nahi ji aisa kuch hi,sub,nahi,hi,NEGATION,P031-V1,13
+R093,patient,saath mein sar dard bhi hai do hafte se,saath mein sar dard bhin hai do hafte se,sub,bhi,bhin,FILLER,P037-V2,2
+R094,patient,nahi ji aisa kuch nahi,ji aisa kuch nahi,del,nahi,,NEGATION,P037-V2,11
+R095,doctor,tablet amoxicillin 500 mg subah dopahar shaam lena hai paanch din ke liye,tablet omez 500 mg subah dopahar shaam lena hai paanch din ke liye,sub,amoxicillin,omez,DRUG,P007-V2,13
+R096,patient,aur nausea bhi hai paanch din se,aur nause bhi hai paanch din se,sub,nausea,nause,CLINICAL,P020-V1,3
+R097,doctor,tablet amlodipine 5 mg roz ek baar lena hai ek mahine ke liye,tablet amlodipine amlopinein mg roz ek baar lena hai ek mahine ke liye,sub,5,amlopinein,NUMBER,P004-V2,9
+R098,patient,nahi koi allergy nahi hai,nahi koi alrgyar nahi hai,sub,allergy,alrgyar,ALLERGY,P024-V2,8
+R099,patient,haan mujhe diabetes hai kaafi saal se,haan mujhe diabetes haan kaafi saal se,sub,hai,haan,FILLER,P039-V2,6
+R100,doctor,tablet amlodipine 5 mg din mein ek baar lena hai ek mahine ke liye,taablet amlodipine 5 mg din mein ek baar lena hai ek mahine ke liye,sub,tablet,taablet,REGIMEN,P006-V2,12
+R101,patient,nahi ji fever to nahi hai,ji fever to nahi hai,del,nahi,,NEGATION,P040-V1,7
+R102,doctor,main paracetamol 650 mg de raha hoon zarurat pade toh,main paracetamol 650 mg de raha zarurat pade toh,del,hoon,,OTHER,P001-V1,15
+R103,patient,aspirin se reaction hua tha ek baar,aspirin se hua tha ek baar,del,reaction,,ALLERGY,P033-V3,8
+R104,doctor,temperature 101 hai pulse 104 hai,temperature 101 hai pulse hai,del,104,,NUMBER,P005-V3,11
+R105,doctor,haan ji pichli baar ke baad ab kya problem hai,haan ji pichli liye ke baad ab kya problem hai,sub,baar,liye,REGIMEN,P005-V3,0
+R106,doctor,main pantocid 40 mg de raha hoon roz ek baar do hafte ke liye,main pantocid 40 mg de raha hoon roz ek baar na hafte ke liye,sub,do,na,OTHER,P011-V2,11
+R107,patient,nahi ji aisa kuch nahi,nahi ji aisa kuch haan,sub,nahi,haan,NEGATION,P037-V2,11
+R108,patient,nahi koi allergy nahi hai,nahi koi alleya nahi hai,sub,allergy,alleya,ALLERGY,P018-V1,8
+R109,patient,nahi ji bukhaar to nahi hai,nahi ji bukhaar to nahi,del,hai,,FILLER,P031-V2,6
+R110,doctor,glimepiride 1 mg roz ek baar lijiye ek mahine ke liye,glepiridee 1 mg roz ek baar lijiye ek mahine ke liye,sub,glimepiride,glepiridee,DRUG,P040-V2,13
+R111,patient,doctor sahab teen din se thand lagna hai,doctor ji teen din se thand lagna hai,sub,sahab,ji,FILLER,P005-V3,1
+R112,doctor,pehle se koi bimari hai,pehle se koi bimari haai,sub,hai,haai,FILLER,P014-V2,7
+R113,doctor,tablet mox 500 mg din mein teen baar lena hai paanch din ke liye,tablet mox 1500 mg din mein teen baar lena hai paanch din ke liye,sub,500,1500,NUMBER,P031-V1,16
+R114,doctor,main dolo 650 de raha hoon din mein teen baar paanch din ke liye,main amoxicillin 650 de raha hoon din mein teen baar paanch din ke liye,sub,dolo,amoxicillin,DRUG,P002-V1,15

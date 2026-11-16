@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "opdscribe"
-version = "0.1.0"
+version = "0.2.0"
 description = "Open-source Hindi-English (Hinglish) OPD scribe: consult -> SNOMED-coded FHIR note, with visit memory and clinical-severity evaluation"
 readme = "README.md"
 license = {text = "Apache-2.0"}
@@ -16,7 +16,9 @@ fhir = ["fhir.resources>=7"]
 eval = ["numpy", "scipy", "matplotlib"]
 asr-whisper = ["faster-whisper>=1.0"]
 asr-aws = ["boto3"]
-dev = ["pytest", "fhir.resources>=7", "numpy", "scipy", "matplotlib"]
+app = ["streamlit>=1.40", "pandas", "fhir.resources>=7"]
+llm = ["boto3"]
+dev = ["pytest", "fhir.resources>=7", "numpy", "scipy", "matplotlib", "streamlit>=1.40", "pandas"]
 
 [project.scripts]
 opdscribe = "opdscribe.cli:main"

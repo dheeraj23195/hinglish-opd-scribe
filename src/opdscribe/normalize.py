@@ -22,6 +22,8 @@ _PUNCT = re.compile(r"[^\wऀ-ॿ\s/.]")
 def tokenize(text: str) -> list[str]:
     text = unicodedata.normalize("NFC", text.lower())
     text = text.replace("।", " ")
+    # Indian prescription notation morning-noon-night, e.g. 1-0-1 -> "dose_101"
+    text = re.sub(r"\b([0-2])\s*-\s*([0-2])\s*-\s*([0-2])\b", r" dose_\1\2\3 ", text)
     text = _PUNCT.sub(" ", text)
     # keep decimals like 101.5 and ratios like 140/90, drop other dots
     text = re.sub(r"(?<!\d)\.|\.(?!\d)", " ", text)
@@ -41,8 +43,8 @@ _CONS = {
     "ल": "l", "व": "v", "श": "sh", "ष": "sh", "स": "s", "ह": "h", "क़": "q", "ख़": "kh", "ग़": "g",
     "ज़": "z", "ड़": "d", "ढ़": "rh", "फ़": "f",
 }
-_VOWELS = {"अ": "a", "आ": "aa", "इ": "i", "ई": "ee", "उ": "u", "ऊ": "oo", "ए": "e", "ऐ": "ai", "ओ": "o", "औ": "au", "ऋ": "ri"}
-_MATRAS = {"ा": "aa", "ि": "i", "ी": "ee", "ु": "u", "ू": "oo", "े": "e", "ै": "ai", "ो": "o", "ौ": "au", "ृ": "ri"}
+_VOWELS = {"ऑ": "o", "ऍ": "e", "अ": "a", "आ": "aa", "इ": "i", "ई": "ee", "उ": "u", "ऊ": "oo", "ए": "e", "ऐ": "ai", "ओ": "o", "औ": "au", "ऋ": "ri"}
+_MATRAS = {"ॉ": "o", "ॅ": "e", "ा": "aa", "ि": "i", "ी": "ee", "ु": "u", "ू": "oo", "े": "e", "ै": "ai", "ो": "o", "ौ": "au", "ृ": "ri"}
 _SIGNS = {"ं": "n", "ँ": "n", "ः": "h"}
 _VIRAMA = "्"
 _NUKTA = "़"
@@ -98,11 +100,14 @@ _KEY_RULES = [
     (r"y(?=[^aeiou]|$)", "i"),
     (r"(.)\1+", r"\1"),  # doubled letters
     (r"(?<=[aeiou])n$", ""),  # nasal ending: nahin -> nahi
+    (r"ie$", "iye"),  # Devanagari-romanised imperatives: lie -> liye, leejie -> lijiye
 ]
 
 
 def phonetic_key(token: str) -> str:
     t = romanize(token.lower())
+    if t == "men":  # Devanagari "में" romanises to "men"
+        t = "mein"
     for pat, rep in _KEY_RULES:
         t = re.sub(pat, rep, t)
     return t
@@ -165,8 +170,12 @@ def canonicalize(tokens: list[str]) -> list[str]:
 
 
 def normalize_text(text: str, canonical: bool = True) -> list[str]:
-    """Full normalisation used before matching: romanise, tokenise,
-    canonicalise spelling variants of function words, number words -> digits."""
+    """Full normalisation used before matching: Devanagari numbers/loanwords,
+    romanise, tokenise, canonicalise spelling variants of function words,
+    number words -> digits."""
+    if re.search(r"[\u0900-\u097F]", text):
+        from .crossscript import preprocess
+        text = preprocess(text)
     toks = tokenize(romanize(text))
     if canonical:
         toks = canonicalize(toks)

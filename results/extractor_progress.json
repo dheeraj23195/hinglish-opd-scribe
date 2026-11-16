@@ -1,0 +1,44 @@
+{
+  "note": "Concept-level errors of the rule extractor on hand-written held-out consults. 'midterm' = commit a717a15. 'crossscript' = mid-term + Devanagari/number/loanword layer (no extractor tuning). 'v0.2' = after extractor improvements made using ONLY held-out v1 errors. v2 was frozen in commit fa256a5 before any tuning; all v2 numbers reproduced by checking out the code version and scoring the frozen file.",
+  "heldout_v1": {
+    "n_consults": 8,
+    "gold_facts": 53,
+    "v0.2": {
+      "critical": 0,
+      "major": 2,
+      "minor": 4
+    },
+    "caveat": "v1 errors guided the changes, so v1 is no longer a fair test",
+    "midterm": {
+      "critical": 0,
+      "major": 12,
+      "minor": 5
+    }
+  },
+  "heldout_v2": {
+    "n_consults": 12,
+    "gold_facts": 61,
+    "v0.2": {
+      "critical": 1,
+      "major": 18,
+      "minor": 1
+    },
+    "remaining_error_types": [
+      "'na X, na Y' pre-posed negation (the critical flip)",
+      "doctor-observed findings ('tonsils swollen')",
+      "implicit SOS ('dard shuru ho toh')",
+      "Devanagari course lengths after the drug",
+      "paraphrases outside the lexicon"
+    ],
+    "midterm": {
+      "critical": 1,
+      "major": 32,
+      "minor": 0
+    },
+    "crossscript": {
+      "critical": 1,
+      "major": 30,
+      "minor": 1
+    }
+  }
+}

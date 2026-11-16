@@ -50,9 +50,11 @@ def score_against(ref_note, c_hyp, use_phonetic=True):
     return clinical_error_score(compare_notes(ref_note, extract(turns_of(c_hyp), use_phonetic=use_phonetic)))
 
 
-def e1(syn, held):
+def e1(syn, held, held2=()):
     out = {}
-    for name, data in (("synthetic", syn), ("heldout", held)):
+    for name, data in (("synthetic", syn), ("heldout", held), ("heldout_v2", held2)):
+        if not data:
+            continue
         tot = {"critical": 0, "major": 0, "minor": 0}
         kinds: dict[str, int] = {}
         n_facts = 0
@@ -222,10 +224,11 @@ def main():
     OUT.mkdir(exist_ok=True); FIG.mkdir(exist_ok=True)
     syn = load(ROOT / "data/synthetic/consults.jsonl")
     held = load(ROOT / "data/heldout/heldout.jsonl")
+    held2 = load(ROOT / "data/heldout/heldout_v2.jsonl")
     if a.quick:
         syn = syn[:15]
     t0 = time.time()
-    results = {"E1_extraction": e1(syn, held)}; print("E1", round(time.time() - t0), "s", flush=True)
+    results = {"E1_extraction": e1(syn, held, held2)}; print("E1", round(time.time() - t0), "s", flush=True)
     sys_rows = e2(syn); results["E2_systems"] = sys_rows; print("E2", round(time.time() - t0), "s", flush=True)
     pts, rho = e3(syn, 8 if a.quick else 80, 10 if a.quick else 30); results["E3_sweep"] = rho
     print("E3", round(time.time() - t0), "s", flush=True)

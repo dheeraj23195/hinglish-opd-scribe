@@ -16,6 +16,9 @@ from typing import Optional
 
 from ..normalize import normalize_text, phonetic_key
 
+# words skipped inside multi-word clinical phrases ("gala bahut kharab")
+INTENSIFIERS = {"bahut", "thoda", "zyada", "kaafi", "bilkul", "poora", "poore", "pura", "halka", "tez", "sa", "si", "bhi"}
+
 
 @dataclass(frozen=True)
 class Concept:
@@ -94,16 +97,30 @@ class Matcher:
             for sf in d.surface_forms:
                 self._add(sf, "drug", d.drug_id, "drug")
         self._drug_keys = {k: v for k, v in self._index.items() if len(k) == 1 and v[0][0] == "drug"}
+        # consonant-skeleton index for cross-script fallback (unique skeletons only)
+        from ..crossscript import skeleton
+        sk: dict[str, set] = {}
+        for k, v in self._index.items():
+            if len(k) == 1 and v[0][2] in ("drug", "symptom", "condition"):
+                for sf in (drugs()[v[0][1]].surface_forms if v[0][0] == "drug" else concepts()[v[0][1]].surface_forms):
+                    if " " not in sf and sf.isascii() and len(skeleton(sf)) >= 4:
+                        sk.setdefault(skeleton(sf), set()).add(v[0])
+        self._skel = {s: next(iter(v)) for s, v in sk.items() if len(v) == 1}
+        self._skeleton = skeleton
 
     def key(self, tok: str) -> str:
         return phonetic_key(tok) if self.use_phonetic else tok
 
     def _add(self, surface: str, kind: str, ref_id: str, category: str) -> None:
-        k = tuple(self.key(t) for t in normalize_text(surface))
-        if not k:
-            return
-        self._index.setdefault(k, []).append((kind, ref_id, category))
-        self._max_len = max(self._max_len, len(k))
+        toks = normalize_text(surface)
+        variants = {tuple(self.key(t) for t in toks)}
+        stripped = [t for t in toks if t not in INTENSIFIERS]
+        if stripped and len(stripped) < len(toks):  # "zyada pyaas" is also indexed as "pyaas"
+            variants.add(tuple(self.key(t) for t in stripped))
+        for k in variants:
+            if k and (kind, ref_id, category) not in self._index.get(k, []):
+                self._index.setdefault(k, []).append((kind, ref_id, category))
+                self._max_len = max(self._max_len, len(k))
 
     def find(self, tokens: list[str], categories: Optional[set[str]] = None) -> list[Match]:
         keys = [self.key(t) for t in tokens]
@@ -120,6 +137,10 @@ class Matcher:
                         break
             if hit is None and self.fuzzy_drugs and (categories is None or "drug" in categories):
                 hit = self._fuzzy_drug(keys[i])
+            if hit is None and self.use_phonetic and len(tokens[i]) >= 6:
+                cand = self._skel.get(self._skeleton(tokens[i]))
+                if cand and (categories is None or cand[2] in categories):
+                    hit = (1, cand)
             if hit:
                 n, (kind, ref_id, cat) = hit
                 out.append(Match(i, i + n, kind, ref_id, cat))

@@ -6,5 +6,5 @@ document, with longitudinal patient memory and clinical-severity evaluation.
 from .pipeline import Scribe, ScribeResult
 from .schema import ClinicalNote, Turn
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __all__ = ["Scribe", "ScribeResult", "ClinicalNote", "Turn"]

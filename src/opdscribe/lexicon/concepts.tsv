@@ -1,25 +1,25 @@
 concept_id	category	preferred_term	snomed_code	surface_forms	code_status
-fever	symptom	Fever	386661006	bukhar|bukhaar|fever|taap|बुखार|ज्वर	recalled
+fever	symptom	Fever	386661006	bukhar|bukhaar|fever|taap|बुखार|ज्वर|temperature aa raha|halka bukhar|tez bukhar	recalled
 cough	symptom	Cough	49727002	khansi|khaansi|khasi|cough|खांसी|खाँसी	verified-web
-sore_throat	symptom	Pain in throat	162397003	gala dard|gale mein dard|gale me dard|gala kharab|sore throat|throat pain|गले में दर्द	recalled
-runny_nose	symptom	Nasal discharge	64531003	naak beh rahi|naak behna|naak se paani|runny nose|zukaam|jukaam|zukam|जुकाम	recalled
-headache	symptom	Headache	25064002	sar dard|sir dard|sardard|sir mein dard|sar mein dard|headache|सिर दर्द	recalled
-body_ache	symptom	Muscle pain	68962001	badan dard|body ache|body pain|sharir mein dard|बदन दर्द	recalled
+sore_throat	symptom	Pain in throat	162397003	gala dard|gale mein dard|gale me dard|gala kharab|sore throat|throat pain|गले में दर्द|throat paining|gale mein kharash|kharash	recalled
+runny_nose	symptom	Nasal discharge	64531003	naak beh rahi|naak behna|naak se paani|runny nose|zukaam|jukaam|zukam|जुकाम|cold|sardi|naak band	recalled
+headache	symptom	Headache	25064002	sar dard|sir dard|sardard|sir mein dard|sar mein dard|headache|सिर दर्द|sir bhaari|sar bhaari|sir bhari|sir dukh	recalled
+body_ache	symptom	Muscle pain	68962001	badan dard|body ache|body pain|sharir mein dard|बदन दर्द|badan toot|badan toot raha|haath pair mein dard|haath pairon mein dard	recalled
 joint_pain	symptom	Arthralgia	57676002	jodon mein dard|joint pain|ghutne mein dard|जोड़ों में दर्द	recalled
 vomiting	symptom	Vomiting	422400008	ulti|ultiyan|vomiting|vomit|उल्टी	recalled
 nausea	symptom	Nausea	422587007	ji machlana|jee machlana|ji ghabrana|nausea|matli|मतली	recalled
 diarrhoea	symptom	Diarrhea	62315008	dast|loose motion|loose motions|patla paikhana|diarrhoea|diarrhea|दस्त	recalled
-abdominal_pain	symptom	Abdominal pain	21522001	pet dard|pet mein dard|pet me dard|stomach pain|abdominal pain|पेट दर्द	recalled
+abdominal_pain	symptom	Abdominal pain	21522001	pet dard|pet mein dard|pet me dard|stomach pain|abdominal pain|पेट दर्द|marod|pet mein marod|pet ke neeche dard	recalled
 chest_pain	symptom	Chest pain	29857009	seene mein dard|chhati mein dard|chest pain|सीने में दर्द	recalled
-breathlessness	symptom	Dyspnea	267036007	saans phoolna|saans phool|saans lene mein dikkat|saans ki taklif|breathlessness|सांस फूलना	recalled
-fatigue	symptom	Fatigue	84229001	kamzori|thakan|thakaan|weakness|tiredness|fatigue|कमज़ोरी|थकान	recalled
+breathlessness	symptom	Dyspnea	267036007	saans phoolna|saans phool|saans lene mein dikkat|saans ki taklif|breathlessness|सांस फूलना|saans mein problem|saans mein dikkat|saans ki problem|breathing problem|saans phool rahi|saans phoolti	recalled
+fatigue	symptom	Fatigue	84229001	kamzori|thakan|thakaan|weakness|tiredness|fatigue|कमज़ोरी|थकान|thakawat|kamjori	recalled
 dizziness	symptom	Dizziness	404640003	chakkar|chakkar aana|dizziness|चक्कर	recalled
 dysuria	symptom	Dysuria	49650001	peshab mein jalan|pesab mein jalan|burning urine|burning micturition|पेशाब में जलन	recalled
 rash	symptom	Eruption of skin	271807003	daane|rash|chakatte|लाल दाने	recalled
 itching	symptom	Itching	418290006	khujli|itching|खुजली	recalled
 loss_of_appetite	symptom	Anorexia	79890006	bhookh kam|bhookh nahi lagti|loss of appetite|भूख कम	recalled
 chills	symptom	Chill	43724002	thand lagna|thand lag rahi|kapkapi|chills|ठंड लगना	recalled
-excessive_thirst	symptom	Excessive thirst	17173007	zyada pyaas|pyaas bahut|excessive thirst|ज्यादा प्यास	recalled
+excessive_thirst	symptom	Excessive thirst	17173007	zyada pyaas|pyaas bahut|excessive thirst|ज्यादा प्यास|pyaas lagti|bahut pyaas|pyaas zyada	recalled
 heartburn	symptom	Heartburn	16331000	seene mein jalan|khatti dakar|heartburn|acidity	recalled
 back_pain	symptom	Backache	161891005	kamar dard|kamar mein dard|back pain|कमर दर्द	recalled
 t2dm	condition	Type 2 diabetes mellitus	44054006	sugar ki bimari|sugar|madhumeh|diabetes|type 2 diabetes|शुगर|मधुमेह	recalled
