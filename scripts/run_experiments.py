@@ -34,7 +34,9 @@ from opdscribe.pipeline import Scribe  # noqa: E402
 from opdscribe.sim.asr_noise import SYSTEMS, corrupt_consult, random_profile  # noqa: E402
 from opdscribe.sim.gold import gold_note, turns_of  # noqa: E402
 
-OUT = ROOT / "results"
+import os  # noqa: E402
+
+OUT = Path(os.environ.get("OPD_RESULTS", ROOT / "results"))  # mid-term outputs in results/, later versions in results/<ver>/
 FIG = OUT / "figures"
 
 
@@ -221,7 +223,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--quick", action="store_true")
     a = ap.parse_args()
-    OUT.mkdir(exist_ok=True); FIG.mkdir(exist_ok=True)
+    OUT.mkdir(parents=True, exist_ok=True); FIG.mkdir(parents=True, exist_ok=True)
     syn = load(ROOT / "data/synthetic/consults.jsonl")
     held = load(ROOT / "data/heldout/heldout.jsonl")
     held2 = load(ROOT / "data/heldout/heldout_v2.jsonl")

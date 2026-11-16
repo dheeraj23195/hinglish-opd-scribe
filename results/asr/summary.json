@@ -1,0 +1,20 @@
+{
+  "faster-whisper-medium|clean": {
+    "n": 16,
+    "wer": 0.44918084129207037,
+    "cs_wer": 0.389553339942031,
+    "clinical_error_score": 16.9375,
+    "critical_per_consult": 1.25,
+    "major_per_consult": 3.0,
+    "pct_consults_with_critical": 93.75
+  },
+  "faster-whisper-medium|clean|heldout_v2": {
+    "n": 12,
+    "wer": 0.5131775788251477,
+    "cs_wer": 0.4428652726220943,
+    "clinical_error_score": 13.75,
+    "critical_per_consult": 1.1666666666666667,
+    "major_per_consult": 2.4166666666666665,
+    "pct_consults_with_critical": 66.66666666666666
+  }
+}

@@ -1,0 +1,662 @@
+{
+ "n": 16,
+ "wer": 0.44918084129207037,
+ "cs_wer": 0.389553339942031,
+ "clinical_error_score": 16.9375,
+ "critical_per_consult": 1.25,
+ "major_per_consult": 3.0,
+ "pct_consults_with_critical": 93.75,
+ "per_consult": [
+  {
+   "consult_id": "H01",
+   "wer": 0.5131578947368421,
+   "cs_wer": 0.4303405572755418,
+   "score": 15.0,
+   "critical": 0,
+   "major": 4,
+   "minor": 3,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "runny_nose"
+    ],
+    [
+     "minor",
+     "missed_pertinent_negative",
+     "fever"
+    ],
+    [
+     "minor",
+     "missed_pertinent_negative",
+     "breathlessness"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "viral_urti"
+    ],
+    [
+     "minor",
+     "missed_allergy",
+     "no_known_allergy"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "cetirizine: HS->None"
+    ],
+    [
+     "major",
+     "course_duration_changed",
+     "cetirizine: 5->None"
+    ]
+   ]
+  },
+  {
+   "consult_id": "H02",
+   "wer": 0.5522388059701493,
+   "cs_wer": 0.49612403100775193,
+   "score": 17.0,
+   "critical": 2,
+   "major": 2,
+   "minor": 1,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "abdominal_pain"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "gastroenteritis"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "ors"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "ondansetron"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "pulse"
+    ]
+   ]
+  },
+  {
+   "consult_id": "H03",
+   "wer": 0.5522388059701493,
+   "cs_wer": 0.5320813771517997,
+   "score": 10.0,
+   "critical": 1,
+   "major": 1,
+   "minor": 2,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "fatigue"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "glimepiride"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "fasting_glucose"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "bp"
+    ]
+   ]
+  },
+  {
+   "consult_id": "H04",
+   "wer": 0.43243243243243246,
+   "cs_wer": 0.32507288629737613,
+   "score": 16.0,
+   "critical": 2,
+   "major": 2,
+   "minor": 0,
+   "errors": [
+    [
+     "major",
+     "hallucinated_finding",
+     "rash"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "uti"
+    ],
+    [
+     "critical",
+     "missed_allergy",
+     "sulfonamide_allergy"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "paracetamol"
+    ]
+   ]
+  },
+  {
+   "consult_id": "H05",
+   "wer": 0.45098039215686275,
+   "cs_wer": 0.3546218487394958,
+   "score": 18.0,
+   "critical": 2,
+   "major": 2,
+   "minor": 2,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "body_ache"
+    ],
+    [
+     "minor",
+     "missed_pertinent_negative",
+     "cough"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "viral_fever"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "azithromycin"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "paracetamol"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "temperature"
+    ]
+   ]
+  },
+  {
+   "consult_id": "H06",
+   "wer": 0.5217391304347826,
+   "cs_wer": 0.35092724679029963,
+   "score": 7.0,
+   "critical": 1,
+   "major": 0,
+   "minor": 2,
+   "errors": [
+    [
+     "minor",
+     "missed_pertinent_negative",
+     "chest_pain"
+    ],
+    [
+     "critical",
+     "dose_changed",
+     "amlodipine: 5->None"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "bp"
+    ]
+   ]
+  },
+  {
+   "consult_id": "H07",
+   "wer": 0.509090909090909,
+   "cs_wer": 0.5386064030131826,
+   "score": 23.0,
+   "critical": 2,
+   "major": 4,
+   "minor": 1,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "breathlessness"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "cough"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "asthma"
+    ],
+    [
+     "critical",
+     "dose_changed",
+     "salbutamol: 2->None"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "salbutamol: SOS->HS"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "montelukast"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "spo2"
+    ]
+   ]
+  },
+  {
+   "consult_id": "H08",
+   "wer": 0.5535714285714286,
+   "cs_wer": 0.46296296296296297,
+   "score": 14.0,
+   "critical": 1,
+   "major": 3,
+   "minor": 0,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "fever"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "body_ache"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "dengue"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "paracetamol"
+    ]
+   ]
+  },
+  {
+   "consult_id": "P001-V1",
+   "wer": 0.42,
+   "cs_wer": 0.3345679012345679,
+   "score": 20.0,
+   "critical": 2,
+   "major": 3,
+   "minor": 1,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "nausea"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "headache"
+    ],
+    [
+     "critical",
+     "missed_allergy",
+     "sulfonamide_allergy"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "paracetamol: SOS->None"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "domperidone"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "bp"
+    ]
+   ]
+  },
+  {
+   "consult_id": "P002-V1",
+   "wer": 0.46153846153846156,
+   "cs_wer": 0.3814317673378076,
+   "score": 23.0,
+   "critical": 1,
+   "major": 5,
+   "minor": 3,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "body_ache"
+    ],
+    [
+     "minor",
+     "missed_pertinent_negative",
+     "cough"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "hypertension"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "dengue"
+    ],
+    [
+     "critical",
+     "dose_changed",
+     "paracetamol: 650->None"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "paracetamol: TDS->None"
+    ],
+    [
+     "major",
+     "course_duration_changed",
+     "paracetamol: 5->None"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "temperature"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "pulse"
+    ]
+   ]
+  },
+  {
+   "consult_id": "P002-V2",
+   "wer": 0.3644859813084112,
+   "cs_wer": 0.315096251266464,
+   "score": 15.0,
+   "critical": 1,
+   "major": 3,
+   "minor": 1,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "fatigue"
+    ],
+    [
+     "minor",
+     "missed_pertinent_negative",
+     "chest_pain"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "hypertension"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "glimepiride"
+    ],
+    [
+     "major",
+     "vital_changed",
+     "fasting_glucose: 168/None->100.0/None"
+    ]
+   ]
+  },
+  {
+   "consult_id": "P003-V1",
+   "wer": 0.38636363636363635,
+   "cs_wer": 0.3423772609819121,
+   "score": 18.0,
+   "critical": 1,
+   "major": 4,
+   "minor": 1,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "nausea"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "headache"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "hypothyroidism"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "paracetamol: SOS->None"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "domperidone"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "bp"
+    ]
+   ]
+  },
+  {
+   "consult_id": "P003-V2",
+   "wer": 0.36752136752136755,
+   "cs_wer": 0.3105022831050228,
+   "score": 17.0,
+   "critical": 1,
+   "major": 3,
+   "minor": 3,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "body_ache"
+    ],
+    [
+     "minor",
+     "missed_pertinent_negative",
+     "cough"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "hypothyroidism"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "viral_fever"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "paracetamol"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "temperature"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "pulse"
+    ]
+   ]
+  },
+  {
+   "consult_id": "P004-V1",
+   "wer": 0.3826086956521739,
+   "cs_wer": 0.39255014326647564,
+   "score": 22.0,
+   "critical": 1,
+   "major": 5,
+   "minor": 2,
+   "errors": [
+    [
+     "minor",
+     "duration_changed",
+     "fever: 7.0->None"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "runny_nose"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "cough"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "hypertension"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "viral_urti"
+    ],
+    [
+     "critical",
+     "missed_allergy",
+     "penicillin_allergy"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "cetirizine: HS->None"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "temperature"
+    ]
+   ]
+  },
+  {
+   "consult_id": "P004-V2",
+   "wer": 0.34285714285714286,
+   "cs_wer": 0.3147953830010493,
+   "score": 17.0,
+   "critical": 1,
+   "major": 3,
+   "minor": 3,
+   "errors": [
+    [
+     "minor",
+     "duration_changed",
+     "dizziness: 7.0->None"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "headache"
+    ],
+    [
+     "minor",
+     "missed_pertinent_negative",
+     "chest_pain"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "hypertension"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "hypertension"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "amoxicillin"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "bp"
+    ]
+   ]
+  },
+  {
+   "consult_id": "P005-V1",
+   "wer": 0.37606837606837606,
+   "cs_wer": 0.35079513564078574,
+   "score": 19.0,
+   "critical": 1,
+   "major": 4,
+   "minor": 2,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "runny_nose"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "cough"
+    ],
+    [
+     "minor",
+     "duration_changed",
+     "fever: 7.0->None"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "viral_urti"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "paracetamol"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "cetirizine: HS->None"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "temperature"
+    ]
+   ]
+  }
+ ]
+}

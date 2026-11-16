@@ -1,0 +1,12 @@
+{
+ "cter_mean": 0.41416154196312316,
+ "rho_vs_score": [
+  -0.07842431972876743,
+  0.691607544822057
+ ],
+ "rho_vs_critical": [
+  0.27263256728647006,
+  0.1604328455915775
+ ],
+ "note": "post-hoc exploratory metric, defined after seeing the real-ASR null result"
+}

@@ -26,7 +26,28 @@ English negations ("No sir, breathing is fine"), Devanagari sentences, raw
 diarisation labels (`spk_0`/`spk_1`), attendants speaking for the patient,
 brand names, implicit answers. Scored once, results reported unchanged.
 
-## 3. Public datasets planned for phase 2
+## 3. Held-out v2 (`data/heldout/heldout_v2.jsonl`)
+
+12 consults, 61 gold facts, written after the mid-term and **committed (fa256a5)
+before any extractor change**. Adds Indian 1-0-1 dosing notation, a mother
+speaking for her child, follow-ups that refer to earlier medicines, English-heavy
+and Devanagari-heavy consults, "na X, na Y" negation. Scored once per code
+version; numbers in `results/extractor_progress.json`.
+
+## 4. Spoken consults (synthetic speech)
+
+Every turn of the synthetic, held-out v1 and v2 consults (1,562 clips, ~62 min)
+rendered in mixed script (`opdscribe.sim.to_devanagari`) and spoken by the macOS
+Hindi voice (`make_audio.command`, run on a team laptop). Used for the real-ASR
+benchmark (`docs/asr_benchmark.md`). Audio is not committed to the repo; it can
+be regenerated from the scripts. Limitation: one clean synthetic voice.
+
+## 5. Clinician rating items (`data/ratings/`)
+
+114 single-error items (one ASR edit each), stratified over 8 clinical
+categories, for metric calibration (`docs/clinician_rating_protocol.md`).
+
+## 6. Public datasets planned for phase 2
 
 | Dataset | What it gives us | Notes |
 |---|---|---|

@@ -1,0 +1,398 @@
+{
+ "n": 12,
+ "wer": 0.5131775788251477,
+ "cs_wer": 0.4428652726220943,
+ "clinical_error_score": 13.75,
+ "critical_per_consult": 1.1666666666666667,
+ "major_per_consult": 2.4166666666666665,
+ "pct_consults_with_critical": 66.66666666666666,
+ "per_consult": [
+  {
+   "consult_id": "V2-01",
+   "wer": 0.6808510638297872,
+   "cs_wer": 0.4178794178794179,
+   "score": 22.0,
+   "critical": 2,
+   "major": 4,
+   "minor": 0,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "fever"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "loss_of_appetite"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "viral_fever"
+    ],
+    [
+     "critical",
+     "dose_changed",
+     "paracetamol: 5->None"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "paracetamol: TDS->None"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "ors"
+    ]
+   ]
+  },
+  {
+   "consult_id": "V2-02",
+   "wer": 0.4634146341463415,
+   "cs_wer": 0.30985915492957744,
+   "score": 3.0,
+   "critical": 0,
+   "major": 1,
+   "minor": 0,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "fatigue"
+    ]
+   ]
+  },
+  {
+   "consult_id": "V2-03",
+   "wer": 0.3333333333333333,
+   "cs_wer": 0.31890660592255127,
+   "score": 10.0,
+   "critical": 0,
+   "major": 3,
+   "minor": 1,
+   "errors": [
+    [
+     "minor",
+     "duration_changed",
+     "dysuria: 2.0->None"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "abdominal_pain"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "uti"
+    ],
+    [
+     "major",
+     "course_duration_changed",
+     "nitrofurantoin: 5->None"
+    ]
+   ]
+  },
+  {
+   "consult_id": "V2-04",
+   "wer": 0.47619047619047616,
+   "cs_wer": 0.3854625550660793,
+   "score": 10.0,
+   "critical": 1,
+   "major": 1,
+   "minor": 2,
+   "errors": [
+    [
+     "minor",
+     "duration_changed",
+     "heartburn: 30.0->None"
+    ],
+    [
+     "minor",
+     "missed_pertinent_negative",
+     "chest_pain"
+    ],
+    [
+     "critical",
+     "dose_changed",
+     "pantoprazole: 40->None"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "pantoprazole: None->OD"
+    ]
+   ]
+  },
+  {
+   "consult_id": "V2-05",
+   "wer": 0.6470588235294118,
+   "cs_wer": 0.6129032258064516,
+   "score": 22.0,
+   "critical": 2,
+   "major": 4,
+   "minor": 0,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "sore_throat"
+    ],
+    [
+     "major",
+     "hallucinated_finding",
+     "rash"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "pharyngitis"
+    ],
+    [
+     "critical",
+     "missed_allergy",
+     "penicillin_allergy"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "azithromycin: OD->None"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "paracetamol"
+    ]
+   ]
+  },
+  {
+   "consult_id": "V2-06",
+   "wer": 0.5581395348837209,
+   "cs_wer": 0.550755939524838,
+   "score": 12.0,
+   "critical": 1,
+   "major": 2,
+   "minor": 1,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "headache"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "hypertension"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "telmisartan"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "bp"
+    ]
+   ]
+  },
+  {
+   "consult_id": "V2-07",
+   "wer": 0.2571428571428571,
+   "cs_wer": 0.24804177545691908,
+   "score": 7.0,
+   "critical": 0,
+   "major": 2,
+   "minor": 1,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "sore_throat"
+    ],
+    [
+     "minor",
+     "missed_pertinent_negative",
+     "fever"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "viral_fever"
+    ]
+   ]
+  },
+  {
+   "consult_id": "V2-08",
+   "wer": 0.5,
+   "cs_wer": 0.2942583732057416,
+   "score": 21.0,
+   "critical": 3,
+   "major": 2,
+   "minor": 0,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "diarrhoea"
+    ],
+    [
+     "critical",
+     "negation_flip",
+     "fever: False->True"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "gastroenteritis"
+    ],
+    [
+     "critical",
+     "dose_changed",
+     "ors: None->4.0"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "ondansetron"
+    ]
+   ]
+  },
+  {
+   "consult_id": "V2-09",
+   "wer": 0.5434782608695652,
+   "cs_wer": 0.5777777777777777,
+   "score": 20.0,
+   "critical": 2,
+   "major": 3,
+   "minor": 1,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "breathlessness"
+    ],
+    [
+     "critical",
+     "dose_changed",
+     "salbutamol: 2->None"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "salbutamol: SOS->HS"
+    ],
+    [
+     "major",
+     "course_duration_changed",
+     "salbutamol: None->3.0"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "montelukast"
+    ],
+    [
+     "minor",
+     "missed_vital",
+     "spo2"
+    ]
+   ]
+  },
+  {
+   "consult_id": "V2-10",
+   "wer": 0.4411764705882353,
+   "cs_wer": 0.4654255319148936,
+   "score": 19.0,
+   "critical": 2,
+   "major": 3,
+   "minor": 0,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "fever"
+    ],
+    [
+     "major",
+     "missed_finding",
+     "loss_of_appetite"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "typhoid"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "azithromycin"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "paracetamol"
+    ]
+   ]
+  },
+  {
+   "consult_id": "V2-11",
+   "wer": 0.6190476190476191,
+   "cs_wer": 0.534090909090909,
+   "score": 10.0,
+   "critical": 0,
+   "major": 3,
+   "minor": 1,
+   "errors": [
+    [
+     "major",
+     "missed_finding",
+     "nausea"
+    ],
+    [
+     "minor",
+     "missed_pertinent_negative",
+     "dizziness"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "ibuprofen: SOS->None"
+    ],
+    [
+     "major",
+     "frequency_changed",
+     "domperidone: SOS->None"
+    ]
+   ]
+  },
+  {
+   "consult_id": "V2-12",
+   "wer": 0.6382978723404256,
+   "cs_wer": 0.5990220048899756,
+   "score": 9.0,
+   "critical": 1,
+   "major": 1,
+   "minor": 1,
+   "errors": [
+    [
+     "minor",
+     "duration_changed",
+     "rash: 1.0->None"
+    ],
+    [
+     "major",
+     "missed_diagnosis",
+     "dengue"
+    ],
+    [
+     "critical",
+     "missed_medication",
+     "paracetamol"
+    ]
+   ]
+  }
+ ]
+}

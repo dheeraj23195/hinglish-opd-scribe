@@ -26,8 +26,8 @@ but **not yet run**: at ~4 s of compute per second of audio for Whisper medium o
 ## Models
 `faster-whisper` CTranslate2 conversion of Whisper **medium** (769M parameters),
 int8 on CPU, `language="hi"`, beam 5, no conditioning on previous text,
-temperature fallback on. Evaluated on 36 consults: held-out v1 (8), held-out v2
-(12) and 16 synthetic consults. Whisper **base** was tried and is not usable for
+temperature fallback on. Evaluated on 28 consults: held-out v1 (8), held-out v2
+(12) and 8 synthetic consults (dev). Whisper **base** was tried and is not usable for
 Hindi at this size. The normaliser was adjusted using the *synthetic* consults'
 transcripts only (dev set); the held-out transcripts were not inspected before scoring.
 
