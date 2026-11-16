@@ -1,0 +1,3 @@
+fhir.resources>=7
+pandas
+streamlit>=1.40
