@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
+import threading
 from pathlib import Path
 from typing import Optional
 
@@ -24,18 +25,27 @@ CHRONIC = {"t2dm", "hypertension", "asthma", "hypothyroidism"}
 
 class PatientMemory:
     def __init__(self, path: str | Path = ":memory:") -> None:
-        self.db = sqlite3.connect(str(path))
+        # check_same_thread=False + a lock: Streamlit reruns the app on different
+        # threads, and one cached Scribe (and its memory) is shared across them.
+        self.db = sqlite3.connect(str(path), check_same_thread=False)
+        self._lock = threading.RLock()
         self.db.execute(
             "CREATE TABLE IF NOT EXISTS encounters (encounter_id TEXT PRIMARY KEY, patient_id TEXT, date TEXT, note_json TEXT)"
         )
         self.db.execute("CREATE INDEX IF NOT EXISTS ix_pat ON encounters(patient_id, date)")
 
     def save(self, note: ClinicalNote) -> None:
-        self.db.execute(
-            "INSERT OR REPLACE INTO encounters VALUES (?,?,?,?)",
-            (note.encounter_id, note.patient_id, note.date, json.dumps(note.to_dict())),
-        )
-        self.db.commit()
+        with self._lock:
+            self.db.execute(
+                "INSERT OR REPLACE INTO encounters VALUES (?,?,?,?)",
+                (note.encounter_id, note.patient_id, note.date, json.dumps(note.to_dict())),
+            )
+            self.db.commit()
+
+    def visits(self) -> list[tuple[str, str]]:
+        """All remembered (patient_id, date) pairs, oldest first per patient."""
+        with self._lock:
+            return list(self.db.execute("SELECT patient_id, date FROM encounters ORDER BY patient_id, date"))
 
     def history(self, patient_id: str, before_date: Optional[str] = None, k: int = 5) -> list[dict]:
         q = "SELECT note_json FROM encounters WHERE patient_id=?"
@@ -45,7 +55,9 @@ class PatientMemory:
             args.append(before_date)
         q += " ORDER BY date DESC LIMIT ?"
         args.append(k)
-        return [json.loads(r[0]) for r in self.db.execute(q, args)]
+        with self._lock:
+            rows = list(self.db.execute(q, args))
+        return [json.loads(r[0]) for r in rows]
 
     def prior_context(self, patient_id: str, before_date: Optional[str] = None) -> dict:
         past = self.history(patient_id, before_date)

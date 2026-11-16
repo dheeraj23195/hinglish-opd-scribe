@@ -120,7 +120,7 @@ with tab1:
         st.download_button("Download FHIR JSON", json.dumps(res.fhir_bundle, indent=2, ensure_ascii=False), file_name=f"{pid}-{date}.fhir.json")
     with st.expander("Visits remembered this session"):
         mem = get_scribe().memory
-        st.write([{"patient": r[0], "date": r[1]} for r in mem.db.execute("SELECT patient_id, date FROM encounters ORDER BY patient_id, date")])
+        st.write([{"patient": r[0], "date": r[1]} for r in mem.visits()])
 
 with tab2:
     st.markdown("Change one word and compare what **WER** says with what happens to the **note**.")
