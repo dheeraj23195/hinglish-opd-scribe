@@ -18,6 +18,17 @@ import streamlit as st
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+# After a hot redeploy Streamlit re-runs this file but keeps already-imported
+# opdscribe modules (they live outside app/) and the cached Scribe. Drop both
+# if they predate the current code so the app never mixes old and new.
+import opdscribe.memory as _mem  # noqa: E402
+
+if not hasattr(_mem.PatientMemory, "visits"):
+    for _k in [k for k in sys.modules if k == "opdscribe" or k.startswith("opdscribe.")]:
+        del sys.modules[_k]
+    st.cache_resource.clear()
+    st.cache_data.clear()
+
 from opdscribe import fhir  # noqa: E402
 from opdscribe.extract import extract  # noqa: E402
 from opdscribe.lexicon import concepts, drugs  # noqa: E402
