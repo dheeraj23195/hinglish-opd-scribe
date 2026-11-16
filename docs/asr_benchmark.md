@@ -18,14 +18,18 @@ consults and scores the resulting notes against the same gold labels.
   excluded; they will be measured separately on real recordings.
 
 ## Noise
-"OPD babble": four other speakers' clips mixed at random offsets plus low-level
-broadband noise, added at a fixed speech-to-noise ratio (20, 10, 5 dB).
+"OPD babble" (four other speakers' clips mixed at random offsets plus low-level
+broadband noise at a fixed speech-to-noise ratio) is implemented (`--snr 20 10 5`)
+but **not yet run**: at ~4 s of compute per second of audio for Whisper medium on
+2 vCPUs, this round covers clean audio only.
 
 ## Models
-`faster-whisper` CTranslate2 conversions of Whisper **base** (74M parameters) and
-**medium** (769M), int8 on CPU, `language="hi"`, beam 5, no conditioning on
-previous text. Medium runs at ~4 s of compute per second of audio on 2 vCPUs,
-so it is evaluated on a 24-consult subset (8 held-out + 16 synthetic).
+`faster-whisper` CTranslate2 conversion of Whisper **medium** (769M parameters),
+int8 on CPU, `language="hi"`, beam 5, no conditioning on previous text,
+temperature fallback on. Evaluated on 36 consults: held-out v1 (8), held-out v2
+(12) and 16 synthetic consults. Whisper **base** was tried and is not usable for
+Hindi at this size. The normaliser was adjusted using the *synthetic* consults'
+transcripts only (dev set); the held-out transcripts were not inspected before scoring.
 
 ## Scoring
 Whisper writes Hindi in Devanagari (including English loanwords: "पैरासिटामोल").
@@ -40,6 +44,7 @@ canonicalisation), then:
 ## Reproduce
 ```bash
 python scripts/asr_benchmark.py --audio-dir AUDIO_DIR \
-  --model models/faster-whisper-medium --model models/faster-whisper-base \
-  --snr clean 20 10 5 --limit 24
+  --model models/faster-whisper-medium --snr clean --limit 24
+python scripts/asr_benchmark.py --audio-dir AUDIO_DIR --model models/faster-whisper-medium \
+  --snr clean --consults data/heldout/heldout_v2.jsonl --limit 12 --tag heldout_v2
 ```

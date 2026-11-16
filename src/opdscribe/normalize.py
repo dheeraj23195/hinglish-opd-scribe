@@ -92,6 +92,7 @@ def romanize(text: str) -> str:
 # Phonetic key: collapses the common romanisation variants.
 # ---------------------------------------------------------------------------
 _KEY_RULES = [
+    (r"chchh|chch", "ch"),  # achchhaa -> achha
     (r"chh", "ch"),
     (r"aa+", "a"), (r"ee+", "i"), (r"ii+", "i"), (r"oo+", "u"), (r"uu+", "u"),
     (r"w", "v"), (r"z", "j"), (r"ph", "f"), (r"q", "k"), (r"ck", "k"),

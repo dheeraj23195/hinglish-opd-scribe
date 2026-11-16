@@ -25,9 +25,9 @@ _NUM_1_99 = """एक दो तीन चार पांच छह सात �
 तिरासी चौरासी पचासी छियासी सत्तासी अट्ठासी नवासी नब्बे इक्यानबे बानवे तिरानवे चौरानवे पचानवे छियानवे सत्तानवे
 अट्ठानवे निन्यानवे""".split()
 NUMBERS: dict[str, float] = {w: i + 1 for i, w in enumerate(_NUM_1_99)}
-NUMBERS.update({"पाँच": 5, "पांच": 5, "छः": 6, "छे": 6, "छै": 6, "नो": 9, "डेढ़": 1.5, "ढाई": 2.5, "आधा": 0.5,
+NUMBERS.update({"पाच": 5, "पान्च": 5, "दश": 10, "चौहद": 14, "पचास": 50, "पाँच": 5, "पांच": 5, "छः": 6, "छे": 6, "छै": 6, "नो": 9, "डेढ़": 1.5, "ढाई": 2.5, "आधा": 0.5,
                 "बाइस": 22, "चौसठ": 64, "इक्यानवे": 91})
-MULT = {"सौ": 100, "हज़ार": 1000, "हजार": 1000}
+MULT = {"सौ": 100, "सो": 100, "हज़ार": 1000, "हजार": 1000}
 SAADHE = {"साढ़े", "साढे"}
 AMBIGUOUS = {"दो", "एक", "नौ", "सात", "साठ"}  # also "give", "one/a", "new", ...: convert only in numeric context
 UNIT_CONTEXT = {"दिन", "दिनों", "बार", "हफ्ते", "हफ़्ते", "महीने", "साल", "mg", "एमजी", "मिलीग्राम", "गोली", "टैबलेट",
@@ -39,7 +39,8 @@ LOANWORDS = dict(x.split(":") for x in """
 टैबलेट:tablet टेबलेट:tablet इनहेलर:inhaler पफ:puff डॉक्टर:doctor डाक्टर:doctor फीवर:fever कफ:cough हेडेक:headache
 वायरल:viral इन्फेक्शन:infection इंफेक्शन:infection डायबिटीज:diabetes डायबिटीज़:diabetes थायरॉइड:thyroid थायराइड:thyroid
 अस्थमा:asthma डेंगू:dengue टाइफाइड:typhoid माइग्रेन:migraine एसिडिटी:acidity एंटीबायोटिक:antibiotic ओआरएस:ors
-बाई:by परसेंट:percent पर्सेंट:percent यूरिन:urine चेस्ट:chest पेन:pain वीकनेस:weakness लूज:loose मोशन:motion
+बाई:by बाय:by भाय:by परसेंट:percent मिलग्राम:mg मिलग्राम्स:mg मिलीग्राम्स:mg आलर्जी:allergy ऐलर्जी:allergy एलर्जी:allergy
+रिएक्शन:reaction रियेक्शन:reaction टैबलेट्स:tablet माइग्रेन:migraine मिग्रेन:migraine फीवर:fever पर्सेंट:percent यूरिन:urine चेस्ट:chest पेन:pain वीकनेस:weakness लूज:loose मोशन:motion
 इलेक्ट्रल:electral डोलो:dolo क्रोसिन:crocin पैरासिटामोल:paracetamol पेरासिटामोल:paracetamol अज़िथ्रल:azithral
 एज़िथ्राल:azithral अज़िथ्रोमाइसिन:azithromycin एज़िथ्रोमाइसिन:azithromycin अमोक्सिसिलिन:amoxicillin मॉक्स:mox
 सेटीरिज़ीन:cetirizine सेट्रिज़िन:cetirizine ओकासेट:okacet मेटफॉर्मिन:metformin ग्लाइकोमेट:glycomet ग्लिमेपिराइड:glimepiride
@@ -63,7 +64,7 @@ def _parse_number(toks: list[str], i: int) -> tuple[float | None, int]:
         t = toks[j]
         if t in NUMBERS:
             cur += NUMBERS[t]; seen = True
-        elif t in MULT and (seen or t == "सौ"):
+        elif t in MULT and (seen or t == "सौ"):  # "सो" (also "sleep") counts only after a number
             cur = (cur or 1) * MULT[t]
             if half:
                 cur += 0.5 * MULT[t]; half = False
@@ -153,6 +154,7 @@ def preprocess(text: str) -> str:
 # consonant skeleton
 # ---------------------------------------------------------------------------
 _SKEL_RULES = [
+    (r"g(?=[eiy])", "j"),  # English soft g: allergy -> alarjee
     (r"ph", "f"), (r"c(?=[eiy])", "s"), (r"ck", "k"), (r"c", "k"), (r"q", "k"), (r"x", "ks"), (r"z", "j"), (r"w", "v"),
     (r"(?<=[kgtdpbsj])h", ""), (r"h", ""), (r"y", ""), (r"[aeiou]", ""), (r"(.)\1+", r"\1"),
 ]
